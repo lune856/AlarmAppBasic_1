@@ -15,9 +15,8 @@ class MainActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//추가추가
-// 2월3일 오후 10시 30분에 추가로 변경했다 칩시다.
-// 변경 변경 오후 10시30 분~
+//Version 0.01
+
 
         val etSecondInput = findViewById<EditText>(R.id.et_InputSeconds)
         val btnSetAlarm = findViewById<Button>(R.id.bt_SetAlarm)
