@@ -1,4 +1,4 @@
-package com.jjongman1.alarmapp1 //Version 0.02b
+package com.jjongman1.alarmapp1 //Version 0.02b for real
 
 import android.app.AlarmManager
 import android.app.PendingIntent
