@@ -6,38 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
         android:id="@+id/tv_setTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:text="Set Time!"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_InputSeconds"
+    <TimePicker
+        android:id="@+id/id_TimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
-        android:ems="10"
-        android:hint="Type in Seconds!"
-        android:inputType="number"
+        android:layout_marginTop="12dp"
+        android:timePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_setTime" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_setTime"></TimePicker>
 
     <Button
-        android:id="@+id/bt_SetAlarm"
+        android:id="@+id/id_Bt_SetAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="START ALARM"
+        android:layout_marginBottom="88dp"
+        android:text="SET ALARM"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_InputSeconds" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/id_Tv_Display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="설정된 시간 표기"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/id_Bt_SetAlarm"
+        app:layout_constraintEnd_toEndOf="@+id/id_Bt_SetAlarm"
+        app:layout_constraintStart_toStartOf="@+id/id_Bt_SetAlarm" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
