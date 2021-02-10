@@ -1,4 +1,4 @@
-package com.jjongman1.alarmapp1 //Version 0.02b for real
+package com.jjongman1.alarmapp1 //Version 0.02c for real
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -6,10 +6,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.TimePicker
+import android.widget.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity()
@@ -53,18 +51,22 @@ class MainActivity : AppCompatActivity()
     // Set Alarm Button v2 (13:25 분에 울리고/ repeat once a day)
     btnSetAlarm.setOnClickListener {
 
-        // 1. Set the alarm to start at Chosen Time .apply { 이 안의 function 을 적용}
+        // 1. Set the alarm to start at chosen Time .apply { 이 안의 function 을 적용}
         val myCalendar : Calendar = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis() // int 로 바꾸기 위해 이걸 쓰는듯. January 1, 1970 UTC 자정 기준으로부터 현재까지의 시간(milliseconds) (시간은 60sec = 1초고 이러니깐 계산 어려워서)
             set(Calendar.HOUR_OF_DAY, hoursSelected) // = this.set(xxx) = myCalendar.set(xx)
             set(Calendar.MINUTE, minutesSelected)
+            set(Calendar.SECOND, 0)
+
+            Toast.makeText(applicationContext,"알람이 $hoursSelected 시 $minutesSelected 분으로 설정되었습니다.", Toast.LENGTH_SHORT).show()
+
             // TODO: also check setWeekDate
         }
-        // 2. Set repeating 2분마다 반복!
-        myAlarmMgr?.setRepeating(
+        // 2. Set repeating 1분마다 반복!
+        myAlarmMgr?.setInexactRepeating(
                 AlarmManager.RTC_WAKEUP,
                 myCalendar.timeInMillis, // 작동 시작 시점?
-                1000 * 60 * 2, // interval
+                1000 * 60 * 1, // interval
                 myAlarmIntent
         )
     }

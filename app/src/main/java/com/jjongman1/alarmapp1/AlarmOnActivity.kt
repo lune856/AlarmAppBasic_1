@@ -20,14 +20,25 @@ class AlarmOnActivity : AppCompatActivity() {
         mediaPlayer.start()
 
         val btnStop = findViewById<Button>(R.id.bt_StopAlarm)
+    // 알람 Cancel
         btnStop.setOnClickListener {
             mediaPlayer.stop()
             // 현재 Activity 에서 알람 cancel 하기. 알람 cancel 시에는 PendingIntent 가 동일한 코드를 갖고 있어야 함.
-            val cancelingAlarmManger = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val cancelingIntent = Intent(this, MainActivity::class.java )
-            val cancelingPendingIntent = PendingIntent.getBroadcast(this,812,cancelingIntent, 0)
-            cancelingAlarmManger.cancel(cancelingPendingIntent)
-            Toast.makeText(this, "Cancel Alarm", Toast.LENGTH_SHORT).show()
+            val cancelingAlarmManger = this.getSystemService(Context.ALARM_SERVICE) as? AlarmManager
+            val cancelingIntent = Intent(this,  MyBroadCastReceiver::class.java)
+            val cancelingPendingIntent = PendingIntent.getBroadcast(this,812,cancelingIntent, PendingIntent.FLAG_NO_CREATE)
+            //FLAG_NO_CREATE: Flag indicating that if the described PendingIntent does not already exist, then simply return null instead of creating it.
+
+            if(cancelingPendingIntent== null){
+                Toast.makeText(this,"PI is null!",Toast.LENGTH_SHORT).show()
+
+            }
+            if(cancelingPendingIntent!=null && cancelingAlarmManger != null)
+            {
+                cancelingAlarmManger.cancel(cancelingPendingIntent)
+                Toast.makeText(this, "Canceled this Alarm", Toast.LENGTH_SHORT).show()
+            }
+
 
         }
     }
